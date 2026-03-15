@@ -1,35 +1,14 @@
-PUTTING SCOREBOARD PWA
+18 Hole Golf Scoreboard PWA
 
-Files included:
-- index.html
-- style.css
-- script.js
-- manifest.json
-- service-worker.js
-- icons/
+What it does:
+- Vertical iPhone-friendly scorecard
+- Tracks 18 holes for 2 players
+- Totals front 9, back 9, and full 18 automatically
+- Exports a CSV scorecard
+- Works offline after install
 
-How to use:
-1. Upload the full folder contents to a GitHub repository.
-2. Turn on GitHub Pages for the repository.
-3. Open the Pages link in Safari on your iPad.
+How to deploy:
+1. Upload all files to a GitHub repository.
+2. Enable GitHub Pages on the main branch / root.
+3. Open the site in Safari on iPhone.
 4. Tap Share > Add to Home Screen.
-5. Launch it from the Home Screen for full-screen PWA mode.
-
-Features:
-- Add, edit, and delete players
-- 3-hole scoring
-- Points mode or lowest-strokes mode
-- Longest made putt tracking
-- CSV export
-- Offline support after first load
-- Saves event data locally on the device
-
-Suggested GitHub Pages structure:
-/
-  index.html
-  style.css
-  script.js
-  manifest.json
-  service-worker.js
-  /icons/icon-192.png
-  /icons/icon-512.png

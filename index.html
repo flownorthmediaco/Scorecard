@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f3b2b" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Golf Scoreboard" />
+  <title>18 Hole Golf Scoreboard</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero card">
+      <div>
+        <p class="eyebrow">iPhone Scorecard</p>
+        <h1 id="eventTitleDisplay">18 Hole Match</h1>
+        <p class="subtext">Built for two players, vertical layout, automatic totals.</p>
+      </div>
+      <button id="editEventBtn" class="ghost full">Edit Match</button>
+    </header>
+
+    <section class="summary-grid">
+      <article class="card stat-card accent-a">
+        <span id="playerANameLabel">Player 1</span>
+        <strong id="playerATotal">0</strong>
+        <small>Front <span id="playerAFront">0</span> · Back <span id="playerABack">0</span></small>
+      </article>
+      <article class="card stat-card accent-b">
+        <span id="playerBNameLabel">Player 2</span>
+        <strong id="playerBTotal">0</strong>
+        <small>Front <span id="playerBFront">0</span> · Back <span id="playerBBack">0</span></small>
+      </article>
+      <article class="card stat-card accent-neutral">
+        <span>Leader</span>
+        <strong id="leaderText">Even</strong>
+        <small id="holesComplete">0 of 18 holes entered</small>
+      </article>
+    </section>
+
+    <section class="card controls-card">
+      <label>
+        Notes
+        <input id="notesField" type="text" maxlength="60" placeholder="Mountain Aire match, skins game, etc." />
+      </label>
+      <div class="button-row">
+        <button id="fillParBtn" class="ghost">Fill Par</button>
+        <button id="exportBtn" class="ghost">Export CSV</button>
+        <button id="resetBtn" class="danger">Reset Card</button>
+      </div>
+    </section>
+
+    <section class="card scorecard-card">
+      <div class="scorecard-header">
+        <h2>Scorecard</h2>
+        <p id="notesDisplay"></p>
+      </div>
+      <div class="scorecard-list" id="scorecardList"></div>
+    </section>
+  </div>
+
+  <dialog id="eventDialog">
+    <form method="dialog" id="eventForm">
+      <h3>Edit Match</h3>
+      <div class="form-grid">
+        <label>
+          Match Title
+          <input type="text" id="eventTitleInput" maxlength="40" placeholder="18 Hole Match" />
+        </label>
+        <label>
+          Player 1 Name
+          <input type="text" id="playerAInput" maxlength="24" placeholder="Player 1" />
+        </label>
+        <label>
+          Player 2 Name
+          <input type="text" id="playerBInput" maxlength="24" placeholder="Player 2" />
+        </label>
+        <label>
+          Notes
+          <input type="text" id="eventNotesInput" maxlength="60" placeholder="Friendly match / Nassau / etc." />
+        </label>
+      </div>
+      <menu>
+        <button value="cancel" class="ghost">Cancel</button>
+        <button value="default" class="primary">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <template id="holeTemplate">
+    <article class="hole-row">
+      <div class="hole-meta">
+        <div>
+          <span class="hole-label"></span>
+          <strong class="hole-number"></strong>
+        </div>
+        <div class="par-pill">Par <span class="par-value"></span></div>
+      </div>
+      <div class="player-columns">
+        <label>
+          <span class="player-a-name">Player 1</span>
+          <input class="score-input score-a" type="number" min="1" max="15" inputmode="numeric" />
+        </label>
+        <label>
+          <span class="player-b-name">Player 2</span>
+          <input class="score-input score-b" type="number" min="1" max="15" inputmode="numeric" />
+        </label>
+      </div>
+      <div class="hole-status"></div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
