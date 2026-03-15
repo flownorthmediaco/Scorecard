@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#113b2c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Putting Scoreboard" />
+  <title>Putting Scoreboard</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Portable Putting Green</p>
+        <h1 id="eventTitleDisplay">Putting Green Challenge</h1>
+      </div>
+      <div class="hero-actions">
+        <button class="ghost" id="editEventBtn">Edit Event</button>
+        <button class="primary" id="addPlayerBtn">+ Add Player</button>
+      </div>
+    </header>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <span>Total Players</span>
+        <strong id="statPlayers">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Average Score</span>
+        <strong id="statAverage">0.0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Longest Made Putt</span>
+        <strong id="statLongest">0' 0&quot;</strong>
+      </article>
+      <article class="stat-card">
+        <span>Total Putts Made</span>
+        <strong id="statMade">0</strong>
+      </article>
+    </section>
+
+    <section class="controls-card">
+      <div class="control-group">
+        <label for="challengeMode">Scoring Mode</label>
+        <select id="challengeMode">
+          <option value="points">Points (3-2-1-0)</option>
+          <option value="strokes">Lowest Strokes Wins</option>
+        </select>
+      </div>
+      <div class="control-group wide">
+        <label for="notesField">Sponsor / Notes</label>
+        <input id="notesField" type="text" placeholder="Flow North Media Co. / Event Sponsor" />
+      </div>
+      <div class="button-row">
+        <button class="ghost" id="exportBtn">Export CSV</button>
+        <button class="ghost" id="demoBtn">Load Demo</button>
+        <button class="danger" id="resetBtn">Reset Event</button>
+      </div>
+    </section>
+
+    <section class="leaderboard-card">
+      <div class="table-header">
+        <h2>Leaderboard</h2>
+        <p id="notesDisplay"></p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player</th>
+              <th>H1</th>
+              <th>H2</th>
+              <th>H3</th>
+              <th>Made</th>
+              <th>Longest</th>
+              <th>Total</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboardBody"></tbody>
+        </table>
+      </div>
+      <div id="emptyState" class="empty-state">
+        Add players to start tracking your putting challenge.
+      </div>
+    </section>
+  </div>
+
+  <dialog id="playerDialog">
+    <form method="dialog" id="playerForm">
+      <h3 id="playerDialogTitle">Add Player</h3>
+      <div class="form-grid">
+        <label>
+          Player Name
+          <input type="text" id="playerName" maxlength="30" required />
+        </label>
+        <label>
+          Longest Made Putt
+          <input type="text" id="longestPutt" inputmode="numeric" placeholder="e.g. 12.5 or 18' 3&quot;" />
+        </label>
+        <label>
+          Hole 1
+          <select id="hole1">
+            <option value="0">0 / Miss</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <label>
+          Hole 2
+          <select id="hole2">
+            <option value="0">0 / Miss</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <label>
+          Hole 3
+          <select id="hole3">
+            <option value="0">0 / Miss</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+      </div>
+      <menu>
+        <button value="cancel" class="ghost">Cancel</button>
+        <button value="default" class="primary" id="savePlayerBtn">Save Player</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <dialog id="eventDialog">
+    <form method="dialog" id="eventForm">
+      <h3>Edit Event</h3>
+      <div class="form-grid event-grid">
+        <label>
+          Event Title
+          <input type="text" id="eventTitleInput" maxlength="40" placeholder="Putting Green Challenge" />
+        </label>
+        <label>
+          Sponsor / Notes
+          <input type="text" id="eventNotesInput" maxlength="60" placeholder="Presented by..." />
+        </label>
+      </div>
+      <menu>
+        <button value="cancel" class="ghost">Cancel</button>
+        <button value="default" class="primary">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <template id="rowTemplate">
+    <tr>
+      <td class="rank"></td>
+      <td class="player"></td>
+      <td class="h1"></td>
+      <td class="h2"></td>
+      <td class="h3"></td>
+      <td class="made"></td>
+      <td class="longest"></td>
+      <td class="total"></td>
+      <td class="row-actions">
+        <button class="mini edit">Edit</button>
+        <button class="mini delete danger">Delete</button>
+      </td>
+    </tr>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
