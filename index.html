@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golf Scorecard</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+<h1>Golf Scorecard</h1>
+
+<section>
+<h2>Course Manager</h2>
+<input id="courseName" placeholder="Course name">
+<textarea id="pars" placeholder="Enter 18 pars separated by commas"></textarea>
+<textarea id="yards" placeholder="Enter 18 yardages separated by commas"></textarea>
+<button onclick="saveCourse()">Save Course</button>
+
+<select id="courseSelect" onchange="loadCourse()"></select>
+</section>
+
+<section id="scorecard">
+<h2>Scorecard</h2>
+<table id="scoreTable"></table>
+</section>
+
+<section>
+<h2>Stats</h2>
+<div id="statsContainer"></div>
+</section>
+
+<section>
+<button onclick="exportPNG()">Export Round PNG</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+body {
+font-family: Arial, sans-serif;
+padding: 10px;
+background: #0f2f1d;
+color: white;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+background: white;
+color: black;
+}
+
+td, th {
+border: 1px solid #ccc;
+padding: 4px;
+text-align: center;
+}
+
+select {
+width: 100%;
+}
+
+textarea, input {
+width: 100%;
+margin-bottom: 5px;
+}
+
+button {
+padding: 10px;
+margin-top: 10px;
+background: #2e8b57;
+color: white;
+border: none;
+}
